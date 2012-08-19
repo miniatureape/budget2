@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="budget"></div>
+{% endblock %}
+
+{% block data %}
+<script>
+    window.UserData = {{ user|safe }};
+    window.DaysData = {{ days|safe }};
+</script>
+
+<script id="tpl-user" type="text/template">
+    <p><label>Email: </label><%= email %></p>
+    <p><label>Currency: </label><%= settings.currency %></p>
+    <p><label>Daily Amt: </label><%= settings.daily_limit %></p>
+</script>
+
+{% endblock %}
+
+{% block page_scripts %}
+    <! -- TODO: package all these in one file called /static/lib/pagelibs.js -->
+    <script src="/static/scripts/zepto.js"></script>
+    <script src="/static/scripts/underscore.js"></script>
+    <script src="/static/scripts/backbone.js"></script>
+    <script src="/static/scripts/backbone.localStorage.js"></script>
+
+    <script src="/static/scripts/budget.util.js"></script>
+    <script src="/static/scripts/budget.js"></script>
+{% endblock %}

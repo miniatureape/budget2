@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+    </head>
+    <body>
+
+        {% block flash %}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                      <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+        {% block data %}{% endblock %}
+        {% block page_scripts %}{% endblock %}
+    </body>
+</html>
